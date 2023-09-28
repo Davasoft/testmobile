@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile Phone Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #message {
+            font-size: 24px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Detecting your mobile phone...</div>
+
+    <script>
+        // Get the user agent string
+        var userAgent = navigator.userAgent;
+
+        // List of common mobile phone types to detect
+        var phoneTypes = [
+            { type: 'iPhone', keyword: 'iPhone' },
+            { type: 'Samsung', keyword: 'Samsung' },
+            { type: 'Google Pixel', keyword: 'Pixel' },
+            // Add more phone types as needed
+        ];
+
+        // Function to detect the phone type
+        function detectPhoneType() {
+            for (var i = 0; i < phoneTypes.length; i++) {
+                if (userAgent.includes(phoneTypes[i].keyword)) {
+                    return phoneTypes[i].type;
+                }
+            }
+            return 'Unknown';
+        }
+
+        // Display the detected phone type
+        var detectedPhoneType = detectPhoneType();
+        var messageElement = document.getElementById('message');
+        messageElement.textContent = 'You are using a ' + detectedPhoneType + ' phone.';
+    </script>
+</body>
+</html>
